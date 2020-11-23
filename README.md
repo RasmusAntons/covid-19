@@ -16,7 +16,7 @@ Whatever this thingy is can give you just that.
 ## Usage
 I'm terrible at organizing code before I write it, so currently, the main module is `world.py`.
 
-As it stands at the moment, the only locational data that's used it the world data from the [WHO](https://covid19.who.int/).
+As it stands at the moment, the only locational data that's used is the world data from the [WHO](https://covid19.who.int/).
 
 Here's a quick example:
 ```python
