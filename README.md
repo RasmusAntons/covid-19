@@ -26,4 +26,5 @@ from covid-19.bin import world
 world.main(address='Manhattan, NY', key='Add Your Key here')
 ```
 >`(168017.7142857143, 11972556, 1453.2857142857142, 253931)` as of 2020-11-23
-> This is also just the country level data, cause I didn't add anything more specific yet :weary:
+>
+>This is also just the country level data, cause I didn't add anything more specific yet :weary:
