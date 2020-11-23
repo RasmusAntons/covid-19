@@ -8,14 +8,14 @@ def locate(key: str = os.environ.get('API key'), address: str = None):
 
     Address is a location that is acceptable by google. They can range from cities to countries.
 
-    Returned is a tuple(country, aal1, aal2, aal3, locality) where aal is administrative area level.
+    Returned is a tuple(country, aal1, aal2, aal3, locality, sublocality) where aal is administrative area level.
     """
     gmaps = googlemaps.Client(key=key)
 
     geocode_result = gmaps.geocode(address=address)
     address_components = geocode_result[0]['address_components']
 
-    country, aal1, aal2, aal3, locality = (None,)*5
+    country, aal1, aal2, aal3, locality, sublocality = (None,)*6
 
     for component in address_components:
         if 'country' in component['types']:
@@ -28,8 +28,10 @@ def locate(key: str = os.environ.get('API key'), address: str = None):
             aal3 = component['long_name']
         if 'locality' in component['types']:
             locality = component['long_name']
+        if 'sublocality' in component['types']:
+            sublocality = component['long_name']
 
-    return country, aal1, aal2, aal3, locality
+    return country, aal1, aal2, aal3, locality, sublocality
 
 
 if __name__ == '__main__':
