@@ -33,4 +33,4 @@ def locate(key: str = os.environ.get('API key'), address: str = None):
 
 
 if __name__ == '__main__':
-    print(locate(address='new york new york'))
+    print(locate(address='Manhattan'))
