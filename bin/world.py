@@ -5,6 +5,9 @@ import pandas as pd
 
 
 def who(country: str):
+    """
+    Returns tuple(avg_cases, cum_cases, avg_deaths, cum_deaths)
+    """
     data = pd.read_csv('https://covid19.who.int/WHO-COVID-19-global-data.csv', header=0, index_col=0)
     data = data[data.Country_code == country]
 
