@@ -4,11 +4,7 @@ import googlemaps
 
 def locate(key: str = os.environ.get('API key'), address: str = None):
     """
-    A google API key is required to use this function. By default, it's defined as an environmental variable 'API key'.
-
-    Address is a location that is acceptable by google. They can range from cities to countries.
-
-    Returned is a tuple(country, aal1, aal2, aal3, locality, sublocality) where aal is administrative area level.
+    Returns tuple(country, aal1, aal2, aal3, locality, sublocality) where aal is administrative area level.
     """
     gmaps = googlemaps.Client(key=key)
 
@@ -19,7 +15,7 @@ def locate(key: str = os.environ.get('API key'), address: str = None):
 
     for component in address_components:
         if 'country' in component['types']:
-            country = component['long_name']
+            country = component['short_name']
         if 'administrative_area_level_1' in component['types']:
             aal1 = component['long_name']
         if 'administrative_area_level_2' in component['types']:
