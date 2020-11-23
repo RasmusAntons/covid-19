@@ -2,6 +2,7 @@ from bin import gmaps
 from bin import countries
 import os
 import pandas as pd
+import sys
 
 
 def who(country: str):
@@ -20,17 +21,15 @@ def who(country: str):
 
 
 def main(address: str, key: str = os.environ.get('API key')):
-    address = gmaps.locate(address=address)
+    country, aal1, aal2, aal3, locality, sublocality = gmaps.locate(address=address, key=key)
 
     # TODO: make it so that if the country in address is a country in the folder /countries, it performs the script
     #  relevant to that country rather than from the world.
-    # if country in countries:
-    #     return country...
-    # else:
-    #     return who(address[0])
-
-    return who(address[0])
+    if country_module := countries.impl.get(country.lower()):
+        return country_module.lookup(country, aal1, aal2, aal3, locality, sublocality)
+    else:
+        return who(country)
 
 
 if __name__ == '__main__':
-    print(main('Manhattan'))
+    print(main(sys.argv[1] if len(sys.argv) > 1 else 'Manhattan'))

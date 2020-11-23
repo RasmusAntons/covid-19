@@ -8,7 +8,7 @@ def locate(key: str = os.environ.get('API key'), address: str = None):
     """
     gmaps = googlemaps.Client(key=key)
 
-    geocode_result = gmaps.geocode(address=address)
+    geocode_result = gmaps.geocode(address=address, language='de')
     address_components = geocode_result[0]['address_components']
 
     country, aal1, aal2, aal3, locality, sublocality = (None,)*6
