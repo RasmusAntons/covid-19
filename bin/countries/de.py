@@ -1,3 +1,5 @@
+from bin.gmaps import Location
+from bin.lib import Covid19Result, UnsupportedLocation
 import urllib.request
 import urllib.parse
 import json
@@ -18,15 +20,21 @@ def current_by_district(district):
         if len(res['features']) == 0:
             raise ValueError('Invalid district')
         attr = res['features'][0]['attributes']
-    pop = attr['cases'] / attr['cases_per_100k']
-    return attr['cases7_per_100k'] * pop / 7, attr['cases'], None, attr['deaths']
+    result = Covid19Result()
+    result.region_name = district
+    result.population = attr['cases'] / attr['cases_per_100k']
+    result.avg_cases = attr['cases7_per_100k'] * result.population / 7
+    result.cum_cases = attr['cases']
+    result.cum_deaths = attr['deaths']
+    return result
 
 
-def lookup(country, aal1, aal2, aal3, locality, sublocality):
-    for district in [f'{locality} {sublocality}', locality]:
+def lookup(location: Location):
+    loc_de = Location(location.query, key=location.key, language='de')
+    for district in [f'{loc_de.locality} {loc_de.sublocality}', loc_de.locality]:
         try:
             return current_by_district(district)
         except ValueError:
             pass
     else:
-        raise ValueError('Location not found')
+        raise UnsupportedLocation(f'Location not found: {loc_de.locality} ({loc_de.sublocality})')
