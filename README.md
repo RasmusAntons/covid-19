@@ -28,3 +28,7 @@ world.main(address='Manhattan, NY', key='Add Your Key here')
 >`(168017.7142857143, 11972556, 1453.2857142857142, 253931)` as of 2020-11-23
 >
 >This is also just the country level data, cause I didn't add anything more specific yet :weary:
+
+## Citations
+* WHO coronavirus disease (COVID-19) dashboard. Geneva: World Health Organization, 2020. Available online: https://covid19.who.int/
+* Data from The New York Times, based on reports from state and local health agencies. U.S. tracking page: https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html
