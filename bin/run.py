@@ -11,6 +11,9 @@ def main(address):
         if region.cc == 'US':
             data = countries.us.run(region)
             return data
+        elif region.cc == 'DE':
+            data = countries.de.run(region)
+            return data
     else:
         # TODO: write who.py
         return 0

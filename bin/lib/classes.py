@@ -15,7 +15,7 @@ class Region:
     """
     def __init__(self, query: str, *args: None, lang: str = 'en'):
         self.query, self.lang = query, lang
-        self.cc, self.aal1, self.aal2, self.aal3, self.local = (i if i else None for i in args) if args else (None,)*5
+        self.cc, self.aal1, self.aal2, self.aal3, self.local, self.sublocal = (i if i else None for i in args) if args else (None,)*6
 
     def __repr__(self):
         return f'classes.Region{vars(self)}'

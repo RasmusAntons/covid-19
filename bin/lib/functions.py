@@ -31,5 +31,7 @@ def locate(address: str, lang: str = None, key: str = os.environ.get('API key'))
             region.aal3 = component['long_name']
         if 'locality' in component['types']:
             region.local = component['long_name']
+        if 'sublocality' in component['types']:
+            region.sublocal = component['long_name']
 
     return region
