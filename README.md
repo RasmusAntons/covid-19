@@ -13,22 +13,6 @@ Whatever this thingy is can give you just that.
 
     `pip install googlemaps`
     * A Google Maps API key.
-## Usage
-I'm terrible at organizing code before I write it, so currently, the main module is `world.py`.
-
-As it stands at the moment, the only locational data that's used is the world data from the [WHO](https://covid19.who.int/).
-
-Here's a quick example:
-```python
-from covid-19.bin import world
-
-# Returns tuple(avg_cases, cum_cases, avg_deaths, cum_deaths)
-world.main(address='Manhattan, NY', key='Add Your Key here')
-```
->`(168017.7142857143, 11972556, 1453.2857142857142, 253931)` as of 2020-11-23
->
->This is also just the country level data, cause I didn't add anything more specific yet :weary:
-
 ## Citations
 * WHO coronavirus disease (COVID-19) dashboard. Geneva: World Health Organization, 2020. Available online: https://covid19.who.int/
 * Data from The New York Times, based on reports from state and local health agencies. U.S. tracking page: https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html
