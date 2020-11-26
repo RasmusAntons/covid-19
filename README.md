@@ -12,7 +12,7 @@ Whatever this thingy is can give you just that.
 * googlemaps
 
     `pip install googlemaps`
-    * A Google Maps API key.
+    * A Google Maps API key
 ## Citations
 * WHO coronavirus disease (COVID-19) dashboard. Geneva: World Health Organization, 2020. Available online: https://covid19.who.int/
 * Data from The New York Times, based on reports from state and local health agencies. U.S. tracking page: https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html
