@@ -5,7 +5,7 @@ import pandas as pd
 
 
 def main(address):
-    region = classes.Region('US', 'New Jersey', 'Passaic County', None, 'Paterson')  # functions.locate(address=address)
+    region = classes.Region('US', 'New Jersey', None, None, 'Paterson')  # functions.locate(address=address)
 
     if region.aal1 and region.cc in countries.countries:
         if region.cc == 'US':
@@ -13,3 +13,11 @@ def main(address):
             return data
     else:
         print('you gotta do WHO')
+
+
+if __name__ == '__main__':
+    print(
+        main(
+            address='paterson nj'
+        )
+    )
