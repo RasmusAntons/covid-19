@@ -1,4 +1,4 @@
-from bin.lib import classes
+from ...bin.lib import classes
 import numpy as np
 import pandas as pd
 

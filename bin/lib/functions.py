@@ -1,8 +1,8 @@
 import os
 import googlemaps
-from bin.lib import classes
-from bin import countries
-from bin import who
+from ...bin.lib import classes
+from ...bin import countries
+from ...bin import who
 
 
 def locate(address: str, lang: str = None, key: str = os.environ.get('API key')):

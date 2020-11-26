@@ -1,4 +1,4 @@
-from bin.countries import us, de
+from ...bin.countries import us, de
 
 
 countries = [
