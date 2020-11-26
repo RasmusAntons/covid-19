@@ -12,12 +12,9 @@ def per_mill(pop, num):
 class Region:
     """
     classes.Region(cc, aal1, aal2, aal3, local)
-
-    * cc -- Country Code
-    * aal -- Administrative Area Level
-    * local -- Locality
     """
-    def __init__(self, *args: None):
+    def __init__(self, query: str, *args: None, lang: str = 'en'):
+        self.query, self.lang = query, lang
         self.cc, self.aal1, self.aal2, self.aal3, self.local = (i if i else None for i in args) if args else (None,)*5
 
     def __repr__(self):

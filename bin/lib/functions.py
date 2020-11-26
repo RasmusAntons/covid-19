@@ -5,7 +5,7 @@ from bin import countries
 from bin import who
 
 
-def locate(address: str, key: str = os.environ.get('API key')):
+def locate(address: str, lang: str = None, key: str = os.environ.get('API key')):
     """
     Returns classes.Region(cc, aal1, aal2, aal3, local)
 
@@ -15,10 +15,10 @@ def locate(address: str, key: str = os.environ.get('API key')):
     """
     gmaps = googlemaps.Client(key=key)
 
-    geocode_result = gmaps.geocode(address=address)
+    geocode_result = gmaps.geocode(address=address, language=lang)
     address_components = geocode_result[0]['address_components']
 
-    region = classes.Region()
+    region = classes.Region(address, lang=lang)
 
     for component in address_components:
         if 'country' in component['types']:
