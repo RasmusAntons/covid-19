@@ -56,6 +56,7 @@ class Covid19Data:
 
         self.sda_cases, self.sda_deaths = sda(df.new_cases), sda(df.new_deaths)
         self.cum_cases, self.cum_deaths = df.cum_cases.tail(1).values[0], df.cum_deaths.tail(1).values[0]
+        self.date = df.date.tail(1).values[0]
 
     @property
     def sda_cpm(self):
