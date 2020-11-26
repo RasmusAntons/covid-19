@@ -4,7 +4,7 @@ import pandas as pd
 def per_mill(pop, num):
     """Returns number per million if population exists."""
     if pop:
-        return num * pop / 10**6
+        return num * 10**6 / pop
     else:
         return None
 
