@@ -43,7 +43,9 @@ class Covid19Data:
 
     """
     def __init__(self, df: pd.DataFrame, pop: int = None):
+        self.region = None
         self.source = None
+        self.source_url = None
 
         self.df = df
         self.pop = pop

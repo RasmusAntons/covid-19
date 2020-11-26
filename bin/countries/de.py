@@ -61,7 +61,7 @@ def current_by_state(state):
     params = {
         'where': f'LAN_ew_GEN=\'{state}\'',
         'units': 'esriSRUnit_Meter',
-        'outFields': 'OBJECTID_1,Fallzahl,Aktualisierung,Death,LAN_ew_EWZ,cases7_bl_per_100k',
+        'outFields': 'OBJECTID_1,LAN_ew_GEN,Aktualisierung,LAN_ew_EWZ',
         'returnGeometry': 'false'
     }
     attrs = _query('Coronafälle_in_den_Bundesländern', params)
@@ -69,6 +69,9 @@ def current_by_state(state):
         raise UnsupportedLocation(f'Invalid state: {state}')
     df = history_for_state(attrs[0]['OBJECTID_1'])
     result = classes.Covid19Data(df, attrs[0]['LAN_ew_EWZ'])
+    result.region = attrs[0]['LAN_ew_GEN']
+    result.source = 'RKI'
+    result.source_url = 'https://corona.rki.de/'
     return result
 
 
@@ -96,7 +99,7 @@ def current_by_district(district):
     params = {
         'where': f'GEN=\'{district}\'',
         'units': 'esriSRUnit_Meter',
-        'outFields': 'cases,cases_per_100k,cases7_per_100k,deaths,EWZ,RS',
+        'outFields': 'GEN,EWZ,RS',
         'returnGeometry': 'false'
     }
     attrs = _query('RKI_Landkreisdaten', params)
@@ -104,6 +107,9 @@ def current_by_district(district):
         raise UnsupportedLocation(f'Invalid district: {district}')
     df = history_for_district(attrs[0]['RS'])
     result = classes.Covid19Data(df, attrs[0]['EWZ'])
+    result.region = attrs[0]['GEN']
+    result.source = 'RKI'
+    result.source_url = 'https://corona.rki.de/'
     return result
 
 
@@ -114,8 +120,8 @@ def run(region: classes.Region, key: str = os.environ.get('API key')):
             region_de.local = f'{region_de.local} {region_de.sublocal}'
         else:
             region_de.local = None
-    if region_de.local:
-        return current_by_district(region_de.local)
+    if region_de.aal3 or region_de.local:
+        return current_by_district(region_de.aal3 or region_de.local)
     return current_by_state(region_de.aal1)
 
 
