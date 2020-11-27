@@ -1,6 +1,6 @@
-from bin.countries import us
+from ...bin.countries import us, de
 
 
 countries = [
-    'US'
+    'US', 'DE'
 ]

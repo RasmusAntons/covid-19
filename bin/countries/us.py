@@ -1,4 +1,4 @@
-from bin.lib import classes
+from ...bin.lib import classes
 import numpy as np
 import pandas as pd
 
@@ -50,5 +50,6 @@ def run(region: classes.Region):
 
     data = classes.Covid19Data(df, pop)
     data.source = 'The New York Times'
+    data.source_url = 'https://github.com/nytimes/covid-19-data'
 
     return data
