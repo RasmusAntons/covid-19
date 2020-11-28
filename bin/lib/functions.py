@@ -1,8 +1,6 @@
 import os
 import googlemaps
 from ...bin.lib import classes
-from ...bin import countries
-from ...bin import who
 
 
 def locate(address: str, lang: str = None, key: str = os.environ.get('API key')):
@@ -23,6 +21,7 @@ def locate(address: str, lang: str = None, key: str = os.environ.get('API key'))
     for component in address_components:
         if 'country' in component['types']:
             region.cc = component['short_name']
+            region.country = component['long_name']
         if 'administrative_area_level_1' in component['types']:
             region.aal1 = component['long_name']
         if 'administrative_area_level_2' in component['types']:

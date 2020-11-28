@@ -11,12 +11,11 @@ def per_mill(pop, num):
 
 class Region:
     """
-    classes.Region(cc, aal1, aal2, aal3, local)
     """
     def __init__(self, query: str, *args: None, lang: str = 'en'):
         self.query, self.lang = query, lang
-        self.cc, self.aal1, self.aal2, self.aal3, self.local, self.sublocal = \
-            (i if i else None for i in args) if args else (None,)*6
+        self.cc, self.country, self.aal1, self.aal2, self.aal3, self.local, self.sublocal = \
+            (i if i else None for i in args) if args else (None,)*7
 
     def __repr__(self):
         return f'classes.Region{vars(self)}'
@@ -24,11 +23,6 @@ class Region:
 
 class Covid19Data:
     """
-    classes.Covid19Data(df)
-
-    * df -- pandas DataFrame
-    * pop -- population
-
     --------
 
     date, new_cases, cum_cases, new_deaths, cum_deaths
