@@ -1,4 +1,4 @@
-from ..bin.lib import classes
+from covid19.lib import classes
 import pandas as pd
 
 
@@ -16,9 +16,14 @@ def run(region: classes.Region):
     df.date, df.new_cases, df.cum_cases, df.new_deaths, df.cum_deaths = \
         date, new_cases, cum_cases, new_deaths, cum_deaths
 
-    # TODO: add population data :pensive:
+    un = pd.read_csv('WPP2019_TotalPopulation.csv')
+    if region.cc == 'US':
+        region.country = 'United States of America'
+    # add failed country population exceptions here
+    un = un[un.Location == region.country]
+    pop = un.PopTotal.head(1).values[0]
 
-    data = classes.Covid19Data(df)
+    data = classes.Covid19Data(df, pop)
     data.source = 'WHO'
     data.source_url = 'https://covid19.who.int/'
     data.region = region.country

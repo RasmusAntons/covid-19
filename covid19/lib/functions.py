@@ -1,6 +1,6 @@
 import os
 import googlemaps
-from ...bin.lib import classes
+from covid19.lib import classes
 
 
 def locate(address: str, lang: str = None, key: str = os.environ.get('API key')):

@@ -1,4 +1,4 @@
-from ...bin.lib import classes, functions
+from covid19.lib import classes, functions
 import urllib.request
 import urllib.parse
 import json
