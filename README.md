@@ -8,7 +8,6 @@ Whatever this thingy is can give you just that.
 * googlemaps
     * Python 3.5+
     * Maps API key
-* matplotlib
 * numpy
 * pandas
 ## Citations

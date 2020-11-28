@@ -7,7 +7,7 @@ import os
 
 def main(address, key: str = os.environ.get('API key')):
     region = functions.locate(address=address, key=key)
-
+    print(region)
     if region.aal1 and region.cc in countries.countries:
         if region.cc == 'US':
             data = countries.us.run(region)

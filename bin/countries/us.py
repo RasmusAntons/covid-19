@@ -17,14 +17,16 @@ def cum2new(cum: np.ndarray):
 def run(region: classes.Region):
     if region.aal2:
         aal = 'counties'
+        location = f'{region.aal2, region.aal1}'
     else:
         aal = 'states'
+        location = f'{region.aal1}'
     url = f'https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-{aal}.csv'
 
     df = pd.read_csv(url)
-    df = df[(df.state == region.aal1) & (df.county == region.aal2.split(' ')[0] if region.aal2 else 1)]
+    df = df[(df.state == region.aal1) & (df.county == ' '.join(region.aal2.split(' ')[:-1]) if region.aal2 else 1)]
 
-    fips = df.fips.head(1).values[0]  # a standard geographic identifier,
+    fips = str(int(df.fips.head(1).values[0])).zfill(5)  # a standard geographic identifier,
     # to make it easier for an analyst to combine this data with other data sets like a map file or population data
     date, cum_cases, cum_deaths = df.date.values, df.cases.values, df.deaths.values
 
@@ -33,7 +35,7 @@ def run(region: classes.Region):
     df.new_cases, df.new_deaths = cum2new(cum_cases), cum2new(cum_deaths)
 
     # -------- population data --------
-    state = int(str(fips)[:2])
+    state = int(fips[:2])
     county = None
     if region.aal2:
         level, file = 'counties', 'co-est2019-alldata'
