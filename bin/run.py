@@ -1,8 +1,6 @@
-from ..bin.lib import classes
 from ..bin.lib import functions
 from ..bin import countries
 from ..bin import who
-import pandas as pd
 import os
 
 

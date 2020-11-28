@@ -17,7 +17,7 @@ def cum2new(cum: np.ndarray):
 def run(region: classes.Region):
     if region.aal2:
         aal = 'counties'
-        location = f'{region.aal2, region.aal1}'
+        location = f'{region.aal2}, {region.aal1}' if region.aal2 else region.aal1
     else:
         aal = 'states'
         location = f'{region.aal1}'
@@ -35,7 +35,8 @@ def run(region: classes.Region):
     df.new_cases, df.new_deaths = cum2new(cum_cases), cum2new(cum_deaths)
 
     # -------- population data --------
-    state = int(fips[:2])
+    state = int(fips[:2]) if region.aal2 else int(fips[-2:])
+
     county = None
     if region.aal2:
         level, file = 'counties', 'co-est2019-alldata'
