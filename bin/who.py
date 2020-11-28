@@ -22,3 +22,5 @@ def run(region: classes.Region):
     data.source = 'WHO'
     data.source_url = 'https://covid19.who.int/'
     data.region = region.country
+
+    return data
