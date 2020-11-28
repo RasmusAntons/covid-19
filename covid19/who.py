@@ -1,5 +1,6 @@
 from covid19.lib import classes
 import pandas as pd
+import pathlib
 
 
 def run(region: classes.Region):
@@ -16,7 +17,7 @@ def run(region: classes.Region):
     df.date, df.new_cases, df.cum_cases, df.new_deaths, df.cum_deaths = \
         date, new_cases, cum_cases, new_deaths, cum_deaths
 
-    un = pd.read_csv('WPP2019_TotalPopulation.csv')
+    un = pd.read_csv(pathlib.Path(__file__).parent.joinpath('WPP2019_TotalPopulation.csv').absolute())
     if region.cc == 'US':
         region.country = 'United States of America'
     elif region.cc == 'KP':
