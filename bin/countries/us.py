@@ -53,5 +53,6 @@ def run(region: classes.Region):
     data = classes.Covid19Data(df, pop)
     data.source = 'The New York Times'
     data.source_url = 'https://github.com/nytimes/covid-19-data'
+    data.region = location
 
     return data
