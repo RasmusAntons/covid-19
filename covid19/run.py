@@ -16,9 +16,4 @@ def main(address, key: str = os.environ.get('API key')):
             return data
     else:
         data = who.run(region)
-        print(data)
         return data
-
-
-if __name__ == '__main__':
-    main('US')
