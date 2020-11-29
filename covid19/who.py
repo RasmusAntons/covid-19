@@ -21,7 +21,7 @@ def run(region: classes.Region):
         region.country = 'United States of America'
     # add failed country population exceptions here
     un = un[un.Location == region.country]
-    pop = un.PopTotal.head(1).values[0]
+    pop = un.PopTotal.head(1).values[0]*1000
 
     data = classes.Covid19Data(df, pop)
     data.source = 'WHO'
