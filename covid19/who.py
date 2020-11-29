@@ -19,6 +19,8 @@ def run(region: classes.Region):
     un = pd.read_csv('WPP2019_TotalPopulation.csv')
     if region.cc == 'US':
         region.country = 'United States of America'
+    elif region.cc == 'KP':
+        region.country = 'Dem. People\'s Republic of Korea'
     # add failed country population exceptions here
     un = un[un.Location == region.country]
     pop = un.PopTotal.head(1).values[0]*1000
