@@ -121,7 +121,11 @@ def run(region: classes.Region, key: str = os.environ.get('API key')):
         else:
             region_de.local = None
     if region_de.aal3 or region_de.local:
-        return current_by_district(region_de.aal3 or region_de.local)
+        try:
+            return current_by_district(region_de.local or region_de.aal3)
+        except UnsupportedLocation:
+            if region_de.local and region_de.aal3:
+                return current_by_district(region_de.aal3)
     return current_by_state(region_de.aal1)
 
 
