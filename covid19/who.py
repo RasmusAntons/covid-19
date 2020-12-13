@@ -22,8 +22,12 @@ def run(region: classes.Region):
         region.country = 'United States of America'
     elif region.cc == 'KP':
         region.country = 'Dem. People\'s Republic of Korea'
+    elif region.cc == 'VN':
+        region.country = 'Viet Nam'
     # add failed country population exceptions here
     un = un[un.Location == region.country]
+    if len(un) == 0:
+        raise RuntimeError(f'Cannot find {region.country} in WHO data.')
     pop = un.PopTotal.head(1).values[0]*1000
 
     data = classes.Covid19Data(df, pop)
