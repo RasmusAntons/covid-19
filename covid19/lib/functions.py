@@ -14,7 +14,10 @@ def locate(address: str, lang: str = None, key: str = os.environ.get('API key'))
     gmaps = googlemaps.Client(key=key)
 
     geocode_result = gmaps.geocode(address=address, language=lang)
-    address_components = geocode_result[0]['address_components']
+    try:
+        address_components = geocode_result[0]['address_components']
+    except IndexError:
+        raise RuntimeError(f'Failed to resolve {address} with googlemaps.')
 
     region = classes.Region(address, lang=lang)
 
