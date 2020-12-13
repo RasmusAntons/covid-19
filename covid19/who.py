@@ -24,6 +24,8 @@ def run(region: classes.Region):
         region.country = 'Dem. People\'s Republic of Korea'
     elif region.cc == 'VN':
         region.country = 'Viet Nam'
+    elif region.cc == 'VA':
+        region.country = 'Holy See'
     # add failed country population exceptions here
     un = un[un.Location == region.country]
     if len(un) == 0:
