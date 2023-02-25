@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools >= 40.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "covid19"
+description = "COVID-19 World Data"
+version = "0.0.1"
+authors = [
+    { name = "Yoon" },
+    { name = "Rasmus Antons", email = "mail@rasmusantons.de" }
+]
+dependencies = [
+    "numpy~=1.24",
+    "pandas~=1.5",
+    "googlemaps~=4.10"
+]
