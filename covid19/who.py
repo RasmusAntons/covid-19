@@ -6,7 +6,7 @@ import pathlib
 def run(region: classes.Region):
     url = 'https://covid19.who.int/WHO-COVID-19-global-data.csv'
 
-    df = pd.read_csv(url)
+    df = pd.read_csv(url, storage_options={'User-Agent': 'Mozilla/5.0'})
     df = df[df.Country_code == region.cc]
 
     date, new_cases, cum_cases, new_deaths, cum_deaths = \

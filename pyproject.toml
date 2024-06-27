@@ -2,6 +2,9 @@
 requires = ["setuptools >= 40.9.0"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools.package-data]
+covid19 = ["WPP2019_TotalPopulation.csv"]
+
 [project]
 name = "covid19"
 description = "COVID-19 World Data"
@@ -11,7 +14,7 @@ authors = [
     { name = "Rasmus Antons", email = "mail@rasmusantons.de" }
 ]
 dependencies = [
-    "numpy~=1.24",
-    "pandas~=1.5",
+    "numpy~=2.0",
+    "pandas~=2.2",
     "googlemaps~=4.10"
 ]
